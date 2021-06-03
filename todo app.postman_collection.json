@@ -286,6 +286,42 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "get all todo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"test1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}client/60b915d7f597da96cccf2248/todo",
+							"host": [
+								"{{base_url}}client"
+							],
+							"path": [
+								"60b915d7f597da96cccf2248",
+								"todo"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
