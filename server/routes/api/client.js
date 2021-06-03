@@ -146,7 +146,7 @@ router.delete('/:id/todo/:todoId', passport.authenticate('jwt', { session: false
 // @desc    Get todo 
 // @access  Auth
 router.get('/:id/todo/:todoId', passport.authenticate('jwt', { session: false }), clientAuth, (req, res, next) => {
-    ClientService.getTodoToClient(req.params.id, req.params.todoId, req.body)
+    ClientService.getTodoToClient(req.params.id, req.params.todoId)
         .then(response => {
             if (response.error) {
                 res.status(400);
@@ -154,6 +154,20 @@ router.get('/:id/todo/:todoId', passport.authenticate('jwt', { session: false })
             return res.json(responseFormat(response, res.statusCode));
         })
         .catch(err => next(err));
+});
+
+
+// @route   GET api/client/{id}/todo
+// @desc    Get all todo 
+// @access  Auth
+router.get('/:id/todo', passport.authenticate('jwt', { session: false }), clientAuth, async(req, res, next) => {
+    try {
+        let response = await ClientService.getAllTodoToClient(req.params.id)
+        return res.json(responseFormat(response, res.statusCode));
+
+    } catch (err) {
+        next(err)
+    }
 });
 
 

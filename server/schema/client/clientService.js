@@ -114,7 +114,7 @@ const updateTodoToClient = Client => (id, todoId, data) =>
 
 
 
-const getTodoToClient = Client => (id, todoId, data) =>
+const getTodoToClient = Client => (id, todoId) =>
     Client.findOne({ _id: id })
     .then(client => {
         if (!client) {
@@ -131,9 +131,25 @@ const getTodoToClient = Client => (id, todoId, data) =>
     .catch(err => Promise.reject(err));
 
 
+const getAllTodoToClient = Client => (id) => {
+    return new Promise(async function(resolve, reject) {
+        try {
+            let client = await Client.findOne({ _id: id })
+            if (!client) {
+                resolve({ error: 'Client not found' });
+            }
+            resolve(client['todo'].map(destructTodo))
+
+        } catch (err) {
+            Promise.reject(err)
+        }
+    })
+}
 
 
-const deleteTodoToClient = Client => (id, todoId, data) =>
+
+
+const deleteTodoToClient = Client => (id, todoId) =>
     Client.findOne({ _id: id })
     .then(client => {
         if (!client) {
@@ -261,5 +277,6 @@ module.exports = Client => ({
     deleteTodoToClient: deleteTodoToClient(Client),
     getTodoToClient: getTodoToClient(Client),
     changePassword: changePassword(Client),
-    editProfile: editProfile(Client)
+    editProfile: editProfile(Client),
+    getAllTodoToClient: getAllTodoToClient(Client)
 });
