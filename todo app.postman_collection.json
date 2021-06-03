@@ -1,0 +1,384 @@
+{
+	"info": {
+		"_postman_id": "50751a1e-b6c6-4f03-aabd-3a63cbb4ae1a",
+		"name": "todo app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "uploadFile",
+			"item": [
+				{
+					"name": "upload file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/HP/Desktop/38294462_1186893058125305_1402859837838065664_o.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}media",
+							"host": [
+								"{{base_url}}media"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"anas-95\",\r\n    \"email\":\"anas3@gmail.com\",\r\n    \"password\":\"password\",\r\n    \"media\": \"60b915bcf597da96cccf2247\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}client/auth/signup",
+							"host": [
+								"{{base_url}}client"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"anas3@gmail.com\",\r\n    \"password\":\"123456\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}client/auth/login",
+							"host": [
+								"{{base_url}}client"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"password\",\r\n    \"newPassword\":\"123456\",\r\n    \"confirmNewPassword\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}client/auth/editPassword",
+							"host": [
+								"{{base_url}}client"
+							],
+							"path": [
+								"auth",
+								"editPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"ssss\",\r\n    \"media\":\"60b8f1ab202b17776c941052\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}client",
+							"host": [
+								"{{base_url}}client"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "todo",
+			"item": [
+				{
+					"name": "update  todo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}client/60b8f5ed589e4c0b64e5888d/todo/60b906c2a7720068fc461f0e",
+							"host": [
+								"{{base_url}}client"
+							],
+							"path": [
+								"60b8f5ed589e4c0b64e5888d",
+								"todo",
+								"60b906c2a7720068fc461f0e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"test1\",\r\n    \"status\":\"DONE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}client/60b8f5ed589e4c0b64e5888d/todo/60b9051f0d23467bc4eda73f",
+							"host": [
+								"{{base_url}}client"
+							],
+							"path": [
+								"60b8f5ed589e4c0b64e5888d",
+								"todo",
+								"60b9051f0d23467bc4eda73f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add todo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"test1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}client/60b915d7f597da96cccf2248/todo",
+							"host": [
+								"{{base_url}}client"
+							],
+							"path": [
+								"60b915d7f597da96cccf2248",
+								"todo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get todo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"test1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}client/60b8f5ed589e4c0b64e5888d/todo/60b903aacc84f57dbc0c0feb",
+							"host": [
+								"{{base_url}}client"
+							],
+							"path": [
+								"60b8f5ed589e4c0b64e5888d",
+								"todo",
+								"60b903aacc84f57dbc0c0feb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "test",
+			"item": [
+				{
+					"name": "test client",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}client/test",
+							"host": [
+								"{{base_url}}client"
+							],
+							"path": [
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "test media",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}media/test",
+							"host": [
+								"{{base_url}}media"
+							],
+							"path": [
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3006/api/"
+		},
+		{
+			"key": "token",
+			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjkxNWQ3ZjU5N2RhOTZjY2NmMjI0OCIsInR5cGUiOiJjbGllbnQiLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNjIyNzQyNDg3LCJleHAiOjE2MjUzMzQ0ODd9.uhwdDgixYS2GX1O-rfImchlJjXTOrWOhyBP2u5YHgFs"
+		}
+	]
+}

@@ -1,0 +1,7 @@
+{
+    "PORT": 3006,
+    "BASE_URL": "http://localhost:3006/",
+    "FILE_PATH": "uploads/clients/",
+    "JWT_SECRET": "cNepho-secret-key",
+    "DB_NAME": "todo"
+}
